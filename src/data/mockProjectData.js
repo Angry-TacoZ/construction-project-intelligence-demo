@@ -151,6 +151,120 @@ export const projectRecords = [
   },
 ]
 
+export const intelligenceSignals = [
+  {
+    label: 'Connected Risk Chains',
+    value: 4,
+    note: 'Linked records across RFI, submittal, change, safety, and meeting prep.',
+  },
+  {
+    label: 'Evidence-Backed Actions',
+    value: 9,
+    note: 'Action recommendations include source records and business reason.',
+  },
+  {
+    label: 'Pilot Questions Answered',
+    value: 6,
+    note: 'Designed to help IT compare configure, buy, and build options.',
+  },
+]
+
+export const riskChains = [
+  {
+    id: 'chain-rough-in',
+    title: 'Above-Ceiling Rough-In Delay Chain',
+    severity: 'High',
+    owner: 'Project Manager',
+    records: ['RFI-014', 'SUB-016', 'SUB-022'],
+    path: [
+      'MEP ceiling coordination conflict remains open',
+      'Ceiling tile submittal depends on coordination answer',
+      'HVAC equipment approval is overdue',
+      'Rough-in inspection and ceiling close-up sequence could slip',
+    ],
+    evidence:
+      'RFI-014 is open 18 days, SUB-016 is waiting on coordination, and SUB-022 is overdue for a long-lead HVAC item.',
+    recommendedMove:
+      'Run a 20-minute focused coordination huddle with design, mechanical, and ceiling trades; end with one owner for the RFI answer and one date for HVAC release.',
+  },
+  {
+    id: 'chain-owner-decisions',
+    title: 'Owner Decision Drag on Finish Release',
+    severity: 'Medium',
+    owner: 'Owner Representative',
+    records: ['CE-004', 'CE-002', 'SUB-018'],
+    path: [
+      'Lobby finish alternate remains pending',
+      'After-hours infection control premium is unresolved',
+      'Door hardware approval is overdue',
+      'Finish procurement and room turnover decisions become harder to sequence',
+    ],
+    evidence:
+      'CE-004 has been pending 12 days, CE-002 has been pending 11 days, and SUB-018 is overdue.',
+    recommendedMove:
+      'Convert these into a two-line owner decision log with a cost/schedule note and requested answer date before the next owner meeting.',
+  },
+  {
+    id: 'chain-field-readiness',
+    title: 'Field Readiness and Inspection Confidence Chain',
+    severity: 'Medium',
+    owner: 'Field Superintendent',
+    records: ['RFI-009', 'SAFE-002', 'CE-003'],
+    path: [
+      'Firestopping detail is overdue',
+      'Material staging housekeeping has repeated issues',
+      'Added sink rough-in is still pricing',
+      'Inspection readiness and daily field flow could degrade at the same time',
+    ],
+    evidence:
+      'RFI-009 is overdue 16 days, SAFE-002 is a repeated open observation, and CE-003 could affect plumbing labor.',
+    recommendedMove:
+      'Pair the inspection readiness review with a field logistics check so documentation and site conditions are corrected together.',
+  },
+]
+
+export const evidencePackets = [
+  {
+    title: 'Escalation Packet: Ceiling Rough-In Risk',
+    audience: 'PM, Superintendent, MEP Engineer, Ceiling Subcontractor',
+    summary:
+      'A meeting-ready packet that connects the open coordination RFI, dependent ceiling material decisions, and overdue HVAC procurement into one escalation.',
+    includes: ['RFI-014', 'SUB-016', 'SUB-022', 'Recommended huddle agenda', 'Decision owner list'],
+  },
+  {
+    title: 'Owner Decision Packet: Finish and Premium Exposure',
+    audience: 'Owner Representative, PM, Operations',
+    summary:
+      'A concise owner-facing packet that separates aesthetic choice, cost exposure, and schedule implication so decisions do not stay buried in logs.',
+    includes: ['CE-004', 'CE-002', 'SUB-018', 'Cost/schedule talking points', 'Requested response dates'],
+  },
+  {
+    title: 'Field Readiness Packet: Inspection and Safety Signals',
+    audience: 'Superintendent, Safety Lead, Project Engineer',
+    summary:
+      'A field-focused packet that combines documentation blockers with observed site conditions before they become inspection misses.',
+    includes: ['RFI-009', 'SAFE-002', 'CE-003', 'Daily verification checklist', 'Closeout owner'],
+  },
+]
+
+export const strategyOptions = [
+  {
+    option: 'Configure Procore Native Tools',
+    bestFor: 'Teams that mainly need cleaner dashboards, reports, and existing tool adoption.',
+    limitation: 'May not connect cross-record risk narratives exactly the way PMs discuss them.',
+  },
+  {
+    option: 'Buy Marketplace App',
+    bestFor: 'Teams that need a supported production integration quickly.',
+    limitation: 'Fit depends on vendor workflow assumptions, data scope, pricing, and security posture.',
+  },
+  {
+    option: 'Run Targeted Intelligence Pilot',
+    bestFor: 'IT-led validation of the specific PM decisions, evidence packets, and ROI model before procurement.',
+    limitation: 'Requires disciplined scope control and a clear path to retire or productize the pilot.',
+  },
+]
+
 export const briefSections = [
   {
     title: 'Top schedule risks',

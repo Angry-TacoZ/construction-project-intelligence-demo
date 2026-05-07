@@ -98,9 +98,9 @@ h1 {
 
 .tab-nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 22px 0;
-  overflow-x: auto;
   padding-bottom: 4px;
 }
 
@@ -147,6 +147,10 @@ main {
 
 .assistant-grid {
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.55fr);
+}
+
+.intelligence-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr);
 }
 
 .span-full {
@@ -237,6 +241,183 @@ main {
 .signal-list {
   display: grid;
   gap: 12px;
+}
+
+.intelligence-kpis {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.intelligence-kpi {
+  align-items: flex-start;
+  background: #f8fafc;
+  border: 1px solid #dfe7ef;
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+  padding: 18px;
+}
+
+.intelligence-kpi strong {
+  align-items: center;
+  background: #e0f2fe;
+  border-radius: 8px;
+  color: #155c86;
+  display: inline-flex;
+  flex: 0 0 54px;
+  font-size: 1.65rem;
+  height: 54px;
+  justify-content: center;
+}
+
+.intelligence-kpi span {
+  color: #182534;
+  display: block;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.intelligence-kpi p,
+.packet-card p,
+.strategy-card p,
+.evidence-box p {
+  color: #607086;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.chain-selector,
+.packet-list,
+.strategy-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.chain-button {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #dfe7ef;
+  border-radius: 8px;
+  color: #233449;
+  display: flex;
+  font-weight: 900;
+  justify-content: space-between;
+  padding: 14px;
+  text-align: left;
+}
+
+.chain-button.active {
+  background: #eef7fc;
+  border-color: #1f6f9f;
+}
+
+.chain-detail {
+  border-top: 1px solid #e3e9f0;
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.chain-meta {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.chain-meta span {
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.chain-meta strong {
+  color: #182534;
+}
+
+.record-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.record-cluster span {
+  background: #f1f5f9;
+  border: 1px solid #dbe3eb;
+  border-radius: 999px;
+  color: #233449;
+  font-size: 0.82rem;
+  font-weight: 900;
+  padding: 6px 10px;
+}
+
+.chain-path {
+  counter-reset: chain;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+}
+
+.chain-path li {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #dfe7ef;
+  border-radius: 8px;
+  color: #34465a;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  line-height: 1.45;
+  padding: 12px;
+}
+
+.chain-path li::before {
+  align-items: center;
+  background: #1f6f9f;
+  border-radius: 50%;
+  color: #fff;
+  content: counter(chain);
+  counter-increment: chain;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 900;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+}
+
+.evidence-box,
+.packet-card,
+.strategy-card {
+  background: #f8fafc;
+  border: 1px solid #dfe7ef;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.evidence-box h3,
+.packet-card h3,
+.strategy-card h3 {
+  color: #182534;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.evidence-box h3:not(:first-child) {
+  margin-top: 16px;
+}
+
+.packet-card dl {
+  margin-top: 14px;
+}
+
+.strategy-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .signal {
@@ -534,7 +715,8 @@ footer {
   }
 
   .overview-grid,
-  .assistant-grid {
+  .assistant-grid,
+  .intelligence-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -554,15 +736,22 @@ footer {
   }
 
   .kpi-grid,
+  .intelligence-kpis,
   .brief-output,
   .phase-list,
-  .suggestion-grid {
+  .suggestion-grid,
+  .strategy-grid {
     grid-template-columns: 1fr;
   }
 
   .action-card,
   .chat-form {
     grid-template-columns: 1fr;
+  }
+
+  .chain-meta {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .panel {

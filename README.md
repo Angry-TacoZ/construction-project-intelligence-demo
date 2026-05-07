@@ -4,12 +4,24 @@ A single-page React + Vite concept demo for Firebase Hosting. The app shows how 
 
 This is a mock-only prototype. It does not connect to Procore, Firebase services, AI APIs, production systems, or private project records.
 
+## Differentiated Concept
+
+The demo is not positioned as a replacement for Procore native tools or the Procore App Marketplace. Its stronger value is as an IT-safe evaluation layer for deciding what kind of workflow intelligence is worth configuring, buying, or piloting.
+
+The `Workflow Intelligence` section demonstrates:
+
+- Cross-record risk chains that connect RFIs, submittals, change events, and safety observations
+- Evidence packets that turn scattered records into meeting-ready escalation summaries
+- Buy/configure/pilot guidance for IT and operations stakeholders
+- Deterministic mock output that can be reviewed without production data access
+
 ## Features
 
 - Project overview for the fake `Lancaster Medical Office Renovation`
 - KPI cards for RFIs, submittals, change events, safety observations, and schedule risk
 - Deterministic weekly risk brief generated from local mock records
 - Filterable RFI, submittal, change event, and safety observation tracker
+- Workflow intelligence layer with connected risk chains, evidence packets, and IT decision support
 - Mock AI project assistant with prewritten project-specific responses
 - PM action list generator
 - ROI / impact estimate using 10 PMs and 52 annual weeks

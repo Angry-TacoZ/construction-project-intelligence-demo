@@ -4,17 +4,22 @@ import {
   actionItems,
   assistantAnswers,
   briefSections,
+  evidencePackets,
   implementationPhases,
+  intelligenceSignals,
   projectKpis,
   projectRecords,
+  riskChains,
   roiScenarios,
   suggestedQuestions,
+  strategyOptions,
 } from './data/mockProjectData'
 
 const tabs = [
   'Project Overview',
   'Weekly Risk Brief',
   'RFI and Submittal Tracker',
+  'Workflow Intelligence',
   'AI Project Assistant',
   'PM Action List Generator',
   'ROI / Impact Estimate',
@@ -43,6 +48,7 @@ function App() {
         {activeTab === 'Project Overview' && <ProjectOverview />}
         {activeTab === 'Weekly Risk Brief' && <WeeklyRiskBrief />}
         {activeTab === 'RFI and Submittal Tracker' && <Tracker />}
+        {activeTab === 'Workflow Intelligence' && <WorkflowIntelligence />}
         {activeTab === 'AI Project Assistant' && <Assistant />}
         {activeTab === 'PM Action List Generator' && <ActionList />}
         {activeTab === 'ROI / Impact Estimate' && <RoiEstimate />}
@@ -60,8 +66,8 @@ function Header() {
         <p className="demo-label">Procore-compatible concept demo</p>
         <h1>Construction Project Intelligence Demo</h1>
         <p className="lede">
-          Mock AI-assisted workflow intelligence for surfacing project risk from RFIs,
-          submittals, change events, safety notes, and schedule signals.
+          Mock AI-assisted workflow intelligence for connecting scattered project records
+          into risk chains, evidence packets, and pilot-ready decisions.
         </p>
       </div>
       <div className="project-card" aria-label="Current demo project">
@@ -225,6 +231,120 @@ function Tracker() {
             ))}
           </tbody>
         </table>
+      </div>
+    </section>
+  )
+}
+
+function WorkflowIntelligence() {
+  const [selectedChainId, setSelectedChainId] = useState(riskChains[0].id)
+  const selectedChain = riskChains.find((chain) => chain.id === selectedChainId)
+
+  return (
+    <section className="section-grid intelligence-grid">
+      <div className="panel span-full">
+        <SectionHeader
+          title="Workflow Intelligence"
+          description="Connect records into explainable risk chains before choosing native configuration, a marketplace app, or a custom pilot."
+        />
+        <div className="intelligence-kpis">
+          {intelligenceSignals.map((signal) => (
+            <article className="intelligence-kpi" key={signal.label}>
+              <strong>{signal.value}</strong>
+              <div>
+                <span>{signal.label}</span>
+                <p>{signal.note}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="panel">
+        <SectionHeader
+          title="Risk Chain Explorer"
+          description="Shows how isolated records can cascade across schedule, procurement, cost, and field readiness."
+        />
+        <div className="chain-selector" aria-label="Risk chains">
+          {riskChains.map((chain) => (
+            <button
+              className={selectedChainId === chain.id ? 'chain-button active' : 'chain-button'}
+              key={chain.id}
+              onClick={() => setSelectedChainId(chain.id)}
+              type="button"
+            >
+              <span>{chain.title}</span>
+              <RiskBadge level={chain.severity} />
+            </button>
+          ))}
+        </div>
+        <article className="chain-detail">
+          <div className="chain-meta">
+            <span>Accountable owner</span>
+            <strong>{selectedChain.owner}</strong>
+          </div>
+          <div className="record-cluster" aria-label="Connected source records">
+            {selectedChain.records.map((record) => (
+              <span key={record}>{record}</span>
+            ))}
+          </div>
+          <ol className="chain-path">
+            {selectedChain.path.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <div className="evidence-box">
+            <h3>Evidence</h3>
+            <p>{selectedChain.evidence}</p>
+            <h3>Recommended move</h3>
+            <p>{selectedChain.recommendedMove}</p>
+          </div>
+        </article>
+      </div>
+
+      <div className="panel">
+        <SectionHeader
+          title="Evidence Packet Generator"
+          description="Creates meeting-ready packets with source records, audience, and the decision the team needs next."
+        />
+        <div className="packet-list">
+          {evidencePackets.map((packet) => (
+            <article className="packet-card" key={packet.title}>
+              <h3>{packet.title}</h3>
+              <p>{packet.summary}</p>
+              <dl>
+                <div>
+                  <dt>Audience</dt>
+                  <dd>{packet.audience}</dd>
+                </div>
+                <div>
+                  <dt>Includes</dt>
+                  <dd>{packet.includes.join(', ')}</dd>
+                </div>
+              </dl>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="panel span-full">
+        <SectionHeader
+          title="IT Decision Support"
+          description="Useful even when Procore native tools or marketplace apps cover part of the problem."
+        />
+        <div className="strategy-grid">
+          {strategyOptions.map((strategy) => (
+            <article className="strategy-card" key={strategy.option}>
+              <h3>{strategy.option}</h3>
+              <p>
+                <strong>Best for:</strong> {strategy.bestFor}
+              </p>
+              <p>
+                <strong>Watchout:</strong> {strategy.limitation}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   )
