@@ -4,6 +4,7 @@
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
 }
 
@@ -15,6 +16,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  line-height: 1.45;
 }
 
 button,
@@ -28,8 +30,10 @@ button {
 }
 
 .app-shell {
+  margin: 0 auto;
+  max-width: 1480px;
   min-height: 100vh;
-  padding: 28px;
+  padding: clamp(14px, 2vw, 28px);
 }
 
 .hero-header {
@@ -39,9 +43,9 @@ button {
   border-radius: 8px;
   color: #fff;
   display: grid;
-  gap: 24px;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  padding: 34px;
+  gap: clamp(18px, 2vw, 28px);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  padding: clamp(22px, 2.5vw, 34px);
   box-shadow: 0 18px 45px rgba(21, 38, 56, 0.18);
 }
 
@@ -62,18 +66,35 @@ p {
 }
 
 h1 {
-  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
   line-height: 1.02;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   max-width: 780px;
 }
 
 .lede {
   color: #d8e3eb;
-  font-size: 1.08rem;
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.5vw, 1.08rem);
+  line-height: 1.55;
   margin-bottom: 0;
   max-width: 780px;
+}
+
+.header-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.header-badges span {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: #dbe9f4;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 6px 10px;
 }
 
 .project-card {
@@ -97,11 +118,16 @@ h1 {
 }
 
 .tab-nav {
+  background: rgba(238, 242, 246, 0.92);
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 22px 0;
-  padding-bottom: 4px;
+  margin: 14px -4px 18px;
+  padding: 8px 4px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
 }
 
 .tab {
@@ -109,10 +135,12 @@ h1 {
   border: 1px solid #dbe3eb;
   border-radius: 8px;
   color: #516173;
-  flex: 0 0 auto;
-  font-size: 0.92rem;
+  flex: 1 1 160px;
+  font-size: 0.88rem;
   font-weight: 700;
-  padding: 11px 14px;
+  min-height: 44px;
+  padding: 10px 12px;
+  text-align: center;
   transition:
     background 160ms ease,
     border-color 160ms ease,
@@ -120,7 +148,6 @@ h1 {
     transform 160ms ease;
 }
 
-.tab:hover,
 .tab.active,
 .tab.active:focus-visible {
   background: #1f6f9f !important;
@@ -128,8 +155,13 @@ h1 {
   color: #fff !important;
 }
 
-.tab:hover {
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .tab:not(.active):hover {
+    background: #f8fafc;
+    border-color: #1f6f9f;
+    color: #155c86;
+    transform: translateY(-1px);
+  }
 }
 
 main {
@@ -139,10 +171,6 @@ main {
 .section-grid {
   display: grid;
   gap: 18px;
-}
-
-.overview-grid {
-  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr);
 }
 
 .assistant-grid {
@@ -170,7 +198,7 @@ main {
   display: flex;
   gap: 18px;
   justify-content: space-between;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .section-header h2,
@@ -178,7 +206,7 @@ main {
 .signal-panel h2,
 .answer-panel h2 {
   color: #182534;
-  font-size: 1.35rem;
+  font-size: clamp(1.2rem, 2vw, 1.35rem);
   line-height: 1.2;
   margin-bottom: 8px;
 }
@@ -194,15 +222,15 @@ main {
 
 .kpi-grid {
   display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(7, minmax(130px, 1fr));
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .kpi-card {
   background: #f8fafc;
   border: 1px solid #dfe7ef;
   border-radius: 8px;
-  padding: 18px;
+  padding: 16px;
 }
 
 .kpi-card span {
@@ -216,7 +244,7 @@ main {
 .kpi-card strong {
   color: #162536;
   display: block;
-  font-size: 2.1rem;
+  font-size: clamp(1.75rem, 3vw, 2.1rem);
   letter-spacing: 0;
   line-height: 1;
   margin: 10px 0;
@@ -224,6 +252,54 @@ main {
 
 .kpi-card small {
   font-weight: 700;
+}
+
+.overview-support {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 1fr) minmax(260px, 0.78fr);
+}
+
+.demo-flow {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-flow li {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 32px minmax(0, 1fr);
+}
+
+.demo-flow li > span {
+  align-items: center;
+  background: #e0f2fe;
+  border-radius: 50%;
+  color: #155c86;
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 900;
+  height: 30px;
+  justify-content: center;
+  margin-top: 2px;
+  width: 30px;
+}
+
+.demo-flow strong {
+  color: #182534;
+  display: block;
+  font-size: 0.93rem;
+  margin-bottom: 2px;
+}
+
+.demo-flow p {
+  color: #607086;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-bottom: 0;
 }
 
 .danger {
@@ -537,6 +613,8 @@ input {
 }
 
 .table-wrap {
+  border: 1px solid #dfe7ef;
+  border-radius: 8px;
   overflow-x: auto;
 }
 
@@ -549,7 +627,7 @@ table {
 th,
 td {
   border-bottom: 1px solid #e3e9f0;
-  padding: 14px 12px;
+  padding: 13px 12px;
   text-align: left;
   vertical-align: top;
 }
@@ -564,7 +642,7 @@ th {
 
 td {
   color: #435367;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 .record-id {
@@ -710,14 +788,91 @@ footer {
 }
 
 @media (max-width: 1180px) {
-  .kpi-grid {
-    grid-template-columns: repeat(4, minmax(150px, 1fr));
-  }
-
-  .overview-grid,
+  .overview-support,
   .assistant-grid,
   .intelligence-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .hero-header {
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) 230px;
+    padding: 20px;
+  }
+
+  .demo-label {
+    font-size: 0.74rem;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 2.45rem);
+    margin-bottom: 10px;
+  }
+
+  .lede {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .header-badges {
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .header-badges span {
+    font-size: 0.72rem;
+    padding: 5px 8px;
+  }
+
+  .project-card {
+    gap: 7px;
+    padding: 14px;
+  }
+
+  .project-card strong {
+    font-size: 1rem;
+  }
+
+  .project-card small {
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .tab {
+    flex-basis: calc(25% - 8px);
+    font-size: 0.86rem;
+    min-height: 52px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kpi-card span {
+    min-height: auto;
+  }
+
+  .intelligence-kpis,
+  .brief-output,
+  .suggestion-grid,
+  .strategy-grid,
+  .phase-list {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    min-width: 900px;
   }
 }
 
@@ -756,5 +911,26 @@ footer {
 
   .panel {
     padding: 18px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .hero-header {
+    grid-template-columns: minmax(0, 1fr) 230px;
+    padding: 20px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .tab {
+    flex-basis: 100%;
+  }
+
+  .header-badges span {
+    width: 100%;
   }
 }

@@ -8,6 +8,29 @@ export const projectKpis = [
   { label: 'Schedule Risk Items', value: 6, note: 'Rough-in path exposed', intent: 'danger' },
 ]
 
+export const demoFlow = [
+  {
+    step: '1',
+    title: 'Start with the project health snapshot',
+    detail: 'Show the KPI spread, then call out the plain-English summary instead of reading every metric.',
+  },
+  {
+    step: '2',
+    title: 'Generate the weekly risk brief',
+    detail: 'Use the generated brief to show that the demo turns mock records into PM-ready talking points.',
+  },
+  {
+    step: '3',
+    title: 'Open Workflow Intelligence',
+    detail: 'Show risk chains and evidence packets as the unique layer beyond a normal dashboard.',
+  },
+  {
+    step: '4',
+    title: 'Close with ROI and implementation notes',
+    detail: 'Position the concept as a safe pilot path before any production Procore integration.',
+  },
+]
+
 export const projectRecords = [
   {
     id: 'RFI-014',
@@ -154,7 +177,7 @@ export const projectRecords = [
 export const intelligenceSignals = [
   {
     label: 'Connected Risk Chains',
-    value: 4,
+    value: 3,
     note: 'Linked records across RFI, submittal, change, safety, and meeting prep.',
   },
   {

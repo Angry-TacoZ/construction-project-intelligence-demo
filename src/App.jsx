@@ -4,6 +4,7 @@ import {
   actionItems,
   assistantAnswers,
   briefSections,
+  demoFlow,
   evidencePackets,
   implementationPhases,
   intelligenceSignals,
@@ -69,6 +70,11 @@ function Header() {
           Mock AI-assisted workflow intelligence for connecting scattered project records
           into risk chains, evidence packets, and pilot-ready decisions.
         </p>
+        <div className="header-badges" aria-label="Demo constraints">
+          <span>Mock data only</span>
+          <span>Read-only concept</span>
+          <span>No production integrations</span>
+        </div>
       </div>
       <div className="project-card" aria-label="Current demo project">
         <span>Demo project</span>
@@ -97,24 +103,39 @@ function ProjectOverview() {
           ))}
         </div>
       </div>
-      <div className="panel status-panel">
-        <h2>Plain-English Status Summary</h2>
-        <p>
-          Lancaster Medical Office Renovation is moving forward, but interior
-          rough-in sequencing is exposed to coordination risk. The main pressure
-          points are aging RFIs tied to ceiling and above-ceiling MEP conflicts,
-          overdue HVAC and door hardware submittals, and pending owner decisions
-          on lobby finishes and exam room casework. The project team should focus
-          this week on closing blockers that affect procurement and room turnover.
-        </p>
-      </div>
-      <div className="panel signal-panel">
-        <h2>Risk Signal Mix</h2>
-        <div className="signal-list">
-          <Signal label="Schedule" value="6 items" tone="high" />
-          <Signal label="Procurement" value="3 long-lead concerns" tone="medium" />
-          <Signal label="Owner Decisions" value="2 pending" tone="medium" />
-          <Signal label="Safety" value="2 observations" tone="low" />
+      <div className="overview-support span-full">
+        <div className="panel status-panel">
+          <h2>Plain-English Status Summary</h2>
+          <p>
+            Lancaster Medical Office Renovation is moving forward, but interior
+            rough-in sequencing is exposed to coordination risk. The main pressure
+            points are aging RFIs tied to ceiling and above-ceiling MEP conflicts,
+            overdue HVAC and door hardware submittals, and pending owner decisions
+            on lobby finishes and exam room casework.
+          </p>
+        </div>
+        <div className="panel demo-path-panel">
+          <h2>Recommended Demo Path</h2>
+          <ol className="demo-flow">
+            {demoFlow.map((item) => (
+              <li key={item.step}>
+                <span>{item.step}</span>
+                <div>
+                  <strong>{item.title}</strong>
+                  <p>{item.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div className="panel signal-panel">
+          <h2>Risk Signal Mix</h2>
+          <div className="signal-list">
+            <Signal label="Schedule" value="6 items" tone="high" />
+            <Signal label="Procurement" value="3 long-lead concerns" tone="medium" />
+            <Signal label="Owner Decisions" value="2 pending" tone="medium" />
+            <Signal label="Safety" value="2 observations" tone="low" />
+          </div>
         </div>
       </div>
     </section>
