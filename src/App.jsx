@@ -4,7 +4,6 @@ import {
   actionItems,
   assistantAnswers,
   briefSections,
-  demoFlow,
   evidencePackets,
   implementationPhases,
   intelligenceSignals,
@@ -113,20 +112,6 @@ function ProjectOverview() {
             overdue HVAC and door hardware submittals, and pending owner decisions
             on lobby finishes and exam room casework.
           </p>
-        </div>
-        <div className="panel demo-path-panel">
-          <h2>Recommended Demo Path</h2>
-          <ol className="demo-flow">
-            {demoFlow.map((item) => (
-              <li key={item.step}>
-                <span>{item.step}</span>
-                <div>
-                  <strong>{item.title}</strong>
-                  <p>{item.detail}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
         </div>
         <div className="panel signal-panel">
           <h2>Risk Signal Mix</h2>
